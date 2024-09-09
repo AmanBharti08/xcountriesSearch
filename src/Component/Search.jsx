@@ -9,7 +9,8 @@ const Search = () => {
       .then((result) => {
         setFlags(result);
         console.log(result);
-      });
+      })
+      .catch((err) => console.error(err));
   };
 
   const handleChange = (value) => {
@@ -21,7 +22,7 @@ const Search = () => {
   }, []);
 
   const filteredFlags = flags.filter((flag) =>
-    flag.name.official.toLowerCase().includes(text.toLowerCase())
+    flag.name.official.toLowerCase().startsWith(text.toLowerCase())
   );
 
   return (
